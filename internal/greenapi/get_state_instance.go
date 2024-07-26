@@ -14,6 +14,10 @@ type GetStateInstanceResponse struct {
 func (api *Client) GetStateInstance(id, token string) (*GetStateInstanceResponse, error) {
 	var response GetStateInstanceResponse
 
+	if len(id) < 4 {
+		return nil, fmt.Errorf("idInstance is too short")
+	}
+
 	url := api.apiUrl(id) + "/waInstance" + id + "/getStateInstance/" + token
 
 	status, body, err := api.client.Get(nil, url)

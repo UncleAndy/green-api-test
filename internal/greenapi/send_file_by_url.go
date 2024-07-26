@@ -1,5 +1,7 @@
 package greenapi
 
+import "fmt"
+
 type SendFileByURLRequest struct {
 	ChatId          string `json:"chatId"`
 	URLFile         string `json:"urlFile"`
@@ -14,6 +16,10 @@ type SendFileByURLResponse struct {
 
 func (api *Client) SendFileByURL(id, token string, request SendFileByURLRequest) (*SendFileByURLResponse, error) {
 	var response SendFileByURLResponse
+
+	if len(id) < 4 {
+		return nil, fmt.Errorf("idInstance is too short")
+	}
 
 	// TODO
 

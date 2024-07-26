@@ -21,6 +21,10 @@ type SendMessageResponse struct {
 func (api *Client) SendMessage(id, token string, request SendMessageRequest) (*SendMessageResponse, error) {
 	var response SendMessageResponse
 
+	if len(id) < 4 {
+		return nil, fmt.Errorf("idInstance is too short")
+	}
+
 	url := api.apiUrl(id) + "/waInstance" + id + "/sendMessage/" + token
 
 	reqBody, err := json.Marshal(request)

@@ -1,0 +1,55 @@
+{{define "content"}}
+    <div class="container text-center">
+        <h1>Green API test</h1>
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="idInstance" placeholder="Enter idInstance here">
+                            <br>
+                            <input type="text" class="form-control" name="apiTokenInstance" placeholder="Enter apiTokenInstance here">
+                            <hr>
+                            <button type="button" class="btn btn-primary" style="width:100%;"
+                                hx-get="/get_settings"
+                                hx-target="#api-response"
+                                hx-swap="innerHTML"
+                                hx-include="[name='idInstance'],[name='apiTokenInstance']"
+                                hx-target-5*="#serious-errors"
+                                hx-indicator="#processing"
+                            >getSettings</button>
+                            <hr>
+                            <button type="button" class="btn btn-primary" style="width:100%;"
+                                hx-get="/get_state_instance"
+                                hx-target="#api-response"
+                                hx-swap="innerHTML"
+                                hx-include="[name='idInstance'],[name='apiTokenInstance']"
+                                hx-indicator="#processing"
+                            >getStateInstance</button>
+                            <hr>
+                            <input type="text" class="form-control" name="chatId" placeholder="Enter chatId here">
+                            <br>
+                            <input type="text" class="form-control" name="message" placeholder="Enter message here">
+                            <br>
+                            <button type="button" class="btn btn-primary" style="width:100%;">sendMessage</button>
+                            <hr>
+                            <input type="text" class="form-control" name="chatId" placeholder="Enter chatId here">
+                            <br>
+                            <input type="text" class="form-control" name="urlFile" placeholder="Enter urlFile here">
+                            <br>
+                            <button type="button" class="btn btn-primary" style="width:100%;">sendFileByUrl</button>
+                            <hr>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h2>Response</h1>
+                <div id="processing" class="htmx-indicator">Request in process...</div>
+                <textarea id="api-response" style="width:100%" rows=20></textarea>
+            </div>
+        </div>
+    </div>
+{{end}}

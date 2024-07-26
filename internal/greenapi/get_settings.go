@@ -34,6 +34,10 @@ type GetSettingsResponse struct {
 func (api *Client) GetSettings(id, token string) (*GetSettingsResponse, error) {
 	var response GetSettingsResponse
 
+	if len(id) < 4 {
+		return nil, fmt.Errorf("idInstance is too short")
+	}
+
 	url := api.apiUrl(id) + "/waInstance" + id + "/getSettings/" + token
 
 	status, body, err := api.client.Get(nil, url)

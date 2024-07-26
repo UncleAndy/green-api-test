@@ -1,0 +1,15 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Green API test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{block "styles" .}}{{end}}
+    {{block "js" .}}{{end}}
+</head>
+<body>
+{{block "content" .}}{{end}}
+</body>
+</html>
+{{end}}
