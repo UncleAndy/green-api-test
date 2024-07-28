@@ -28,17 +28,29 @@
                                 hx-indicator="#processing"
                             >getStateInstance</button>
                             <hr>
-                            <input type="text" class="form-control" name="chatId" placeholder="Enter chatId here">
+                            <input type="text" class="form-control" name="chatIdSend" placeholder="Enter chatId here">
                             <br>
                             <input type="text" class="form-control" name="message" placeholder="Enter message here">
                             <br>
-                            <button type="button" class="btn btn-primary" style="width:100%;">sendMessage</button>
+                            <button type="button" class="btn btn-primary" style="width:100%;"
+                                hx-get="/send_message"
+                                hx-target="#api-response"
+                                hx-swap="innerHTML"
+                                hx-include="[name='idInstance'],[name='apiTokenInstance'],[name='chatIdSend'],[name='message']"
+                                hx-indicator="#processing"
+                            >sendMessage</button>
                             <hr>
-                            <input type="text" class="form-control" name="chatId" placeholder="Enter chatId here">
+                            <input type="text" class="form-control" name="chatIdFile" placeholder="Enter chatId here">
                             <br>
                             <input type="text" class="form-control" name="urlFile" placeholder="Enter urlFile here">
                             <br>
-                            <button type="button" class="btn btn-primary" style="width:100%;">sendFileByUrl</button>
+                            <button type="button" class="btn btn-primary" style="width:100%;"
+                                hx-get="/send_file_by_url"
+                                hx-target="#api-response"
+                                hx-swap="innerHTML"
+                                hx-include="[name='idInstance'],[name='apiTokenInstance'],[name='chatIdFile'],[name='urlFile']"
+                                hx-indicator="#processing"
+                            >sendFileByUrl</button>
                             <hr>
                         </div>
                         </form>
@@ -48,7 +60,7 @@
             <div class="col">
                 <h2>Response</h1>
                 <div id="processing" class="htmx-indicator">Request in process...</div>
-                <textarea id="api-response" style="width:100%" rows=20></textarea>
+                <textarea id="api-response" style="width:100%" rows=20 readonly></textarea>
             </div>
         </div>
     </div>

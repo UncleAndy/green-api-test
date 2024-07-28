@@ -41,6 +41,8 @@ func (s *Server) Run() {
 
 	httpRouter.GET("/get_settings", s.GetSettings)
 	httpRouter.GET("/get_state_instance", s.GetStateInstance)
+	httpRouter.GET("/send_message", s.SendMessage)
+	httpRouter.GET("/send_file_by_url", s.SendFileByURL)
 
 	server := &fasthttp.Server{
 		Handler:            httpRouter.Handler,
