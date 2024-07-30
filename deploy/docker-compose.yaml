@@ -1,0 +1,11 @@
+---
+services:
+  green-api-test:
+    image: green-api-test
+    # build: ./
+    restart: always
+    environment:
+      SERVER_HOST: 0.0.0.0
+      SERVER_PORT: 8080
+    ports:
+      - 8088:8080
